@@ -1,6 +1,8 @@
 var http = require('http');
 var env = require('node-env-file'); // .env file
 env(__dirname + '/.env');
+var login = require('./src/users/Login')
+var registro = require('./src/users/Register')
 var express = require('express');
 
 
@@ -17,9 +19,8 @@ app.disable('x-powered-by');
 app.set('port', PORT);
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('its work!')
-})
+app.post('/login', login) //login. 
+app.post('/registro', registro) //login. 
 
 app.use(express.static('public'));
 http.createServer(app).listen(app.get('port'), function () {

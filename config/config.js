@@ -1,6 +1,6 @@
 let mysql = require('mysql');
 var env = require('node-env-file');
-env(__dirname + '/.env');
+env('./.env');
 let connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
